@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Photo } from '../../shared/models/photo.model';
 
 @Component({
   selector: 'app-items-card',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './items-card.css'
 })
 export class ItemsCard {
-
+  @Input() photo!: Photo;
 }

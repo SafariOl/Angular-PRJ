@@ -1,1 +1,5 @@
-<p>items-list works!</p>
+<div class="items-list">
+    @for ( photo of photos; track photo.id) {
+        <app-items-card [photo]="photo"></app-items-card>
+    }
+</div>

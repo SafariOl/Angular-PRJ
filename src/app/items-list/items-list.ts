@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Photo } from '../../shared/models/photo.model';
+import { ItemsCard } from '../items-card/items-card';
 
 @Component({
   selector: 'app-items-list',
-  imports: [],
+  imports: [ItemsCard],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
@@ -15,7 +16,7 @@ export class ItemsList {
       category: 'Природа',
       description: 'Красивий захід сонця над гірським хребтом.',
       price: 29.99,
-      imageUrl: 'assets/photos/image_1.jpg',
+      imageUrl: 'photos/image_1.jpg',
       createdAt: new Date("2025-06-03")
     },
     {
@@ -24,7 +25,7 @@ export class ItemsList {
       category: 'Місто',
       description: 'Міський горизонт вночі з усіма його вогнями.',
       price: 39.99,
-      imageUrl: 'assets/photos/image_2.jpg',
+      imageUrl: 'photos/image_2.jpg',
       createdAt: new Date("2025-06-15")
     },
     {
@@ -32,7 +33,7 @@ export class ItemsList {
       title: 'Лісова стежка',
       category: 'Природа',
       description: 'Спокійна стежка через ліс.',
-      imageUrl: 'assets/photos/image_3.jpg',
+      imageUrl: 'photos/image_3.jpg',
       createdAt: new Date("2025-06-20") 
     }
   ]
