@@ -2,7 +2,7 @@
     <div class="card-photo">
         <img [src]="photo.imageUrl" [alt]="photo.title">
     </div>
-    <div>
+    <div [ngClass]="{'free-photo' : !photo.price}">
         <h3>{{photo.title}}</h3>
         <p>{{photo.description}}</p>
         <div class="card-footer">
@@ -10,7 +10,7 @@
             @if (photo.price) {
                 <p class="price">{{photo.price}}$</p>
             } @else {
-                <button>download</button>
+                <p class="price">FREE</p>
             }
         </div>
     </div>
