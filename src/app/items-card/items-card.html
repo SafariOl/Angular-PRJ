@@ -1,17 +1,13 @@
-<div class="card">
+<div [ngClass]="{'price-photo' : photo.price}" class="card">
     <div class="card-photo">
         <img [src]="photo.imageUrl" [alt]="photo.title">
     </div>
-    <div [ngClass]="{'free-photo' : !photo.price}">
+    <div >
         <h3>{{photo.title}}</h3>
         <p>{{photo.description}}</p>
         <div class="card-footer">
             <p class="category">Category: {{photo.category}}</p>
-            @if (photo.price) {
-                <p class="price">{{photo.price}}$</p>
-            } @else {
-                <p class="price">FREE</p>
-            }
+            <button (click)="getPhotoDetails()">Детальніше</button>
         </div>
     </div>
 </div>

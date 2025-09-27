@@ -6,11 +6,19 @@
     width: max-content;
 }
 
-img {
+.card-photo{
+    position: relative;
     width: 350px;
     height: 200px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -27,22 +35,34 @@ img {
     color: #646464;
 }
 
-.price {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-right: .5em;
-    color: red;
-
-    font-style: normal;
+ .price-photo .card-photo::before  {
+    content: '';
+    position: absolute;
+    background-image: url('/photos/star.png');
+    background-size: cover;
+    z-index: 111;
+    width: 20px;
+    height: 20px;
+    top: 15px;
+    left: 15px;
 }
 
-.free-photo .price {
-    background: #0c41abd7;
-    color: white;
-    border-radius: 5px;
-    border: .5px solid #000;
-    font-size: 1em;
-    box-shadow: 2px 2px 5px #000;
-    margin-right: .5em;
+ .price-photo .card-photo::after  {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 11;
+    width: 40px;
+    height: 40px;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+button{
+    background-color: #07539f;
+    color: #fff;
+    font-size: .8em;
     padding: .5em 1em;
+    border-radius: 5px;
 }

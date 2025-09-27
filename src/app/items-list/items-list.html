@@ -1,5 +1,16 @@
-<div class="items-list">
-    @for ( photo of photos; track photo.id) {
-        <app-items-card [photo]="photo"></app-items-card>
-    }
+<div>
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="search" placeholder="Search...">
+        <button (click)="onSearch()">Search</button>
+    </div>
+
+    <div class="items-list">
+        @for ( photo of filteredPhotos; track photo.id) {
+            <app-items-card 
+            [photo]="photo" 
+            (select)="onItemSelected($event)"
+            >
+            </app-items-card>
+        }
+    </div>
 </div>

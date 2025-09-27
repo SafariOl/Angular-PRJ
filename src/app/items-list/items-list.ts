@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Photo } from '../../shared/models/photo.model';
 import { ItemsCard } from '../items-card/items-card';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items-list',
-  imports: [ItemsCard],
+  imports: [FormsModule, ItemsCard],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
@@ -37,4 +38,18 @@ export class ItemsList {
       createdAt: new Date("2025-06-20") 
     }
   ]
+
+  search: string = "";
+  filteredPhotos = this.photos
+
+  onItemSelected(photo: Photo) {
+    console.log("Деталі: ", photo)
+  }
+
+  onSearch () {
+    return this.filteredPhotos = this.photos.filter(photo => 
+      photo.title.toLowerCase().includes(this.search.toLowerCase())
+    )
+  }
+
 }
