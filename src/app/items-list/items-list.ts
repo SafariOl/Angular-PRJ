@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { Photo } from '../../shared/models/photo.model';
+import { Component, Inject } from '@angular/core';
 import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
+import { Data } from '../data.service';
+import { Photo } from '../../shared/models/photo.model';
 
 @Component({
   selector: 'app-items-list',
@@ -10,37 +11,18 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './items-list.css'
 })
 export class ItemsList {
-  photos: Photo[] = [
-    {
-      id: 1,
-      title: 'Захід сонця в горах',
-      category: 'Природа',
-      description: 'Красивий захід сонця над гірським хребтом.',
-      price: 29.99,
-      imageUrl: 'photos/image_1.jpg',
-      createdAt: new Date("2025-06-03")
-    },
-    {
-      id: 2,
-      title: 'Міський горизонт',
-      category: 'Місто',
-      description: 'Міський горизонт вночі з усіма його вогнями.',
-      price: 39.99,
-      imageUrl: 'photos/image_2.jpg',
-      createdAt: new Date("2025-06-15")
-    },
-    {
-      id: 3,
-      title: 'Лісова стежка',
-      category: 'Природа',
-      description: 'Спокійна стежка через ліс.',
-      imageUrl: 'photos/image_3.jpg',
-      createdAt: new Date("2025-06-20") 
-    }
-  ]
-
+  photos:Photo[] = []
   search: string = "";
-  filteredPhotos = this.photos
+  filteredPhotos:Photo[] = []
+
+  constructor(
+    private dataService:Data
+  ){}
+
+  ngOnInit() {
+    this.photos = this.dataService.getItems()
+    this.filteredPhotos = this.photos
+  }
 
   onItemSelected(photo: Photo) {
     console.log("Деталі: ", photo)
