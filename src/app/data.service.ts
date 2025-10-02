@@ -4,7 +4,7 @@ import { Photo } from '../shared/models/photo.model';
 @Injectable({
   providedIn: 'root'
 })
-export class Data {
+export class DataService {
  photos: Photo[] = [
     {
       id: 1,

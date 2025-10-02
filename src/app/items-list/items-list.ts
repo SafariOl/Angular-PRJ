@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
-import { Data } from '../data.service';
+import { DataService } from '../data.service';
 import { Photo } from '../../shared/models/photo.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class ItemsList {
   filteredPhotos:Photo[] = []
 
   constructor(
-    private dataService:Data
+    private dataService:DataService
   ){}
 
   ngOnInit() {

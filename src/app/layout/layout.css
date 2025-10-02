@@ -1,0 +1,23 @@
+header {
+    background-color: #07539f;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+
+
+footer{
+    background-color: #032f5b ;
+    color: white;
+    text-align: center;
+    display: grid;
+    font-weight: bold;
+    place-items: center
+}
+
+.wrapper{
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    min-height: 100vh;
+}

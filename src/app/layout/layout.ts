@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ItemsList } from '../items-list/items-list';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './layout.html',
   styleUrl: './layout.css'
 })
