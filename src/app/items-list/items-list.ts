@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Photo } from '../../shared/models/photo.model';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
@@ -13,15 +14,18 @@ import { Photo } from '../../shared/models/photo.model';
 export class ItemsList {
   photos:Photo[] = []
   search: string = "";
-  filteredPhotos:Photo[] = []
+  private subscription!: Subscription
 
   constructor(
     private dataService:DataService
   ){}
 
   ngOnInit() {
-    this.photos = this.dataService.getItems()
-    this.filteredPhotos = this.photos
+    this.subscription = this.dataService.getItems().subscribe(val => this.photos = val)
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 
   onItemSelected(photo: Photo) {
@@ -29,9 +33,13 @@ export class ItemsList {
   }
 
   onSearch () {
-    return this.filteredPhotos = this.photos.filter(photo => 
-      photo.title.toLowerCase().includes(this.search.toLowerCase())
-    )
+    const searchTrim = this.search.trim()
+
+    if(searchTrim){
+      this.dataService.filterItems(searchTrim)
+    }else{
+      this.dataService.resetItems()
+    }
   }
 
 }
