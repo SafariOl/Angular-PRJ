@@ -42,6 +42,11 @@ export class DataService {
     return this.photos$
   }
 
+  getItem(id: number) {
+    const item = this.photos.filter(item => item.id == id)
+    return item[0]
+  }
+
   filterItems(search: string) {
     const filtered = this.photos.filter(photo => 
       photo.title.toLowerCase().includes(search.toLowerCase())

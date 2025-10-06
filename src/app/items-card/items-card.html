@@ -7,7 +7,7 @@
         <p>{{photo.description}}</p>
         <div class="card-footer">
             <p class="category">Category: {{photo.category}}</p>
-            <button (click)="getPhotoDetails()">Детальніше</button>
+            <button routerLink="/items-list/{{photo.id}}" >Детальніше</button>
         </div>
     </div>
 </div>

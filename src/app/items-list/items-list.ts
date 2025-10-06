@@ -3,11 +3,12 @@ import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Photo } from '../../shared/models/photo.model';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-items-list',
-  imports: [FormsModule, ItemsCard],
+  imports: [FormsModule, ItemsCard, RouterLink],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
