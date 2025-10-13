@@ -1,14 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Photo } from '../../shared/models/photo.model';
 import { Subscription } from 'rxjs';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-items-list',
-  imports: [FormsModule, ItemsCard, RouterLink],
+  imports: [FormsModule, ItemsCard],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
