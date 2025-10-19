@@ -4,10 +4,10 @@
     </div>
     <div >
         <h3>{{photo.title}}</h3>
-        <p>{{photo.description}}</p>
+        <p>{{photo.description | shorten }}</p>
         <div class="card-footer">
             <p class="category">Category: {{photo.category}}</p>
-            <button routerLink="/items-list/{{photo.id}}" >Детальніше</button>
+            <button appChangeElementStyle="orange" routerLink="/items-list/{{photo.id}}" >Детальніше</button>
         </div>
     </div>
 </div>

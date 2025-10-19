@@ -1,33 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ItemsCard } from '../items-card/items-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Photo } from '../../shared/models/photo.model';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-items-list',
-  imports: [FormsModule, ItemsCard],
+  imports: [FormsModule, ItemsCard, NgForOf, AsyncPipe],
   templateUrl: './items-list.html',
   styleUrl: './items-list.css'
 })
 export class ItemsList {
-  photos:Photo[] = []
   search: string = "";
-  private subscription!: Subscription
-
-  constructor(
-    private dataService:DataService
-  ){}
-
-  ngOnInit() {
-    this.subscription = this.dataService.getItems().subscribe(val => this.photos = val)
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
-  }
-
+  private dataService = inject(DataService)
+  
+  photos$:Observable<Photo[]> = this.dataService.getItems()
+  
   onItemSelected(photo: Photo) {
     console.log("Деталі: ", photo)
   }
