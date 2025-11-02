@@ -1,0 +1,39 @@
+<div class="item-form">
+    <h2>СТВОРІТЬ СВІЙ ПОСТ</h2>
+    <form [formGroup]="item_form" (ngSubmit)="onSubmit()">
+        <label for="title">
+            Назва*:
+            <input type="text" formControlName="title" id="title">
+            <div *ngIf="item_form.get('title')?.hasError('required') && item_form.get('title')?.touched">
+                <small>Додайте назву</small>
+            </div>
+        </label>
+        <label for="title">
+            Категорія*:
+            <select  formControlName="category">
+                @for(category of categories; track category){
+                    <option>
+                        {{category}}
+                    </option>
+                }
+            </select>
+        </label>
+        <label for="price">
+            Ціна:
+            <input formControlName="price" type="number" min="0" value="0">
+        </label>
+        <label for="description">
+            Опис:
+            <textarea formControlName="description" id="description"></textarea>
+        </label>
+    
+        <label for="image">
+            <input type="file" (change)="onFileSelected($event)" id="image">
+            <div *ngIf="item_form.get('imageUrl')?.hasError('required') && item_form.get('imageUrl')?.touched">
+                <small>Додайте зображення</small>
+            </div>
+        </label>
+    
+        <button type="submit" [disabled]="item_form.invalid">СТВОРИТИ</button>
+    </form>
+</div>

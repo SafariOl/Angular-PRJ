@@ -7,3 +7,4 @@ export interface Photo {
   imageUrl: string;
   createdAt: Date;
 }
+

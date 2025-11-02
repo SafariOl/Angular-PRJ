@@ -6,8 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ShortenPipe implements PipeTransform {
 
   transform(value: string, limit: number = 40): string {
-    const shorten_val = value.slice(0, limit)
-    return shorten_val + '...';
+    if(value) {
+      const shorten_val = value.slice(0, limit)
+      return shorten_val + '...';
+    }
+
+    return ''
   }
 
 }

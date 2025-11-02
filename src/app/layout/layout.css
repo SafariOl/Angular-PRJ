@@ -1,11 +1,29 @@
 header {
     background-color: #07539f;
     color: white;
-    display: grid;
+    display: flex;
     place-items: center;
+    justify-content: space-between;
     font-weight: bold;
+    padding: 0 5vw;
 }
 
+nav{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+nav a {
+    color: #ccc;
+    font-size: .9em;
+    transition: all .15s ease;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
 
 footer{
     background-color: #032f5b ;

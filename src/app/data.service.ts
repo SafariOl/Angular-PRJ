@@ -47,6 +47,17 @@ export class DataService {
     return item[0]
   }
 
+  addItem(item: any) {
+    const full_item = {
+      id: this.photos.length+1,
+      createdAt: new Date(),
+      ...item,
+    }
+    
+    this.photos.push(full_item)
+    this.photosSubject.next([...this.photos])
+  }
+
   filterItems(search: string) {
     const filtered = this.photos.filter(photo => 
       photo.title.toLowerCase().includes(search.toLowerCase())
