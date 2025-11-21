@@ -19,7 +19,10 @@ export class ItemDetails {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.photoDetails = this.dataService.getItem(params['id'])
+      this.dataService.getItem(params['id']).subscribe({
+        next: (data) => this.photoDetails  = data,
+        error: (err) => console.error(`Error: ${err}`)
+      })
     })
   }
   

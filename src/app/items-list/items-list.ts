@@ -17,15 +17,15 @@ export class ItemsList {
   search: string = "";
   private dataService = inject(DataService)
   
-  photos$:Observable<Photo[]> = this.dataService.getItems()
+  photos$:Observable<Photo[]> = this.dataService.photos$
   
   onItemSelected(photo: Photo) {
     console.log("Деталі: ", photo)
   }
 
+  
   onSearch () {
     const searchTrim = this.search.trim()
-
     if(searchTrim){
       this.dataService.filterItems(searchTrim)
     }else{
